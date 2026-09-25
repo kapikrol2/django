@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Sklep Komputerowy{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'shop/style.css' %}">
+</head>
+<body>
+    <nav>
+        <a href="{% url 'shop:index' %}">Start</a>
+        <a href="{% url 'shop:item_list' %}">Lista</a>
+        <a href="{% url 'shop:item_add' %}">Dodaj</a>
+    </nav>
+    <hr>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        <p>Wygenerowano: {% now "Y-m-d H:i:s" %}</p>
+    </footer>
+</body>
+</html>
