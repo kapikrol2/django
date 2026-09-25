@@ -1,10 +1,43 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'shop/base.html' %}
 
-</body>
-</html>
+{% block title %}Lista Produktów{% endblock %}
+
+{% block content %}
+<h2>Wyszukiwarka produktów</h2>
+<!-- Wyszukiwarka bez CSRF, bo korzysta z GET -->
+<form method="get" action="">
+    {{ search_form.q }}
+    {{ search_form.in_stock.label_tag }} {{ search_form.in_stock }}
+    <button type="submit">Szukaj</button>
+</form>
+
+<h2>Lista Sprzętu</h2>
+<table>
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Nazwa</th>
+            <th>Cena</th>
+            <th>Kategoria</th>
+            <th>Dostępność</th>
+            <th>Akcje</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in items %}
+        <tr class="{% if not item.is_available %}disabled-item{% endif %}">
+            <td>{{ forloop.counter }}</td>
+            <td>{{ item.name }}</td>
+            <td>{{ item.price }} zł</td>
+            <td>{{ item.category }}</td>
+            <td>{{ item.is_available|yesno:"Dostępny,Niedostępny" }}</td>
+            <td><a href="{% url 'shop:item_detail' item.id %}">Szczegóły</a></td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="6">Brak produktów do wyświetlenia.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
