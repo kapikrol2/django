@@ -43,5 +43,4 @@ def item_add(request):
     else:
         form = ComputerItemForm()
 
-    return render(request, 'shop/item_form.html', {'form': form})
-a
+    return render(request, 'shop/item_form.html', {'form': form}))
