@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from .forms import ComputerItemForm, SearchForm
 
-# Zadanie 2: Słownik z 5 elementami
+
 ITEMS = [
     {"id": 1, "name": "Laptop Dell XPS 15", "price": 7500.00, "category": "Laptop", "is_available": True},
     {"id": 2, "name": "Komputer Gaming Pro", "price": 5200.00, "category": "Desktop", "is_available": True},
@@ -43,4 +43,4 @@ def item_add(request):
     else:
         form = ComputerItemForm()
 
-    return render(request, 'shop/item_form.html', {'form': form}))
+    return render(request, 'shop/item_form.html', {'form': form})

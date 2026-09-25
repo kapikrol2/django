@@ -1,10 +1,4 @@
-{% extends 'shop/base.html' %}
-
-{% block title %}Lista Produktów{% endblock %}
-
-{% block content %}
 <h2>Wyszukiwarka produktów</h2>
-<!-- Wyszukiwarka bez CSRF, bo korzysta z GET -->
 <form method="get" action="">
     {{ search_form.q }}
     {{ search_form.in_stock.label_tag }} {{ search_form.in_stock }}
@@ -40,4 +34,3 @@
         {% endfor %}
     </tbody>
 </table>
-{% endblock %}

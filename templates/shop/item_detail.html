@@ -1,8 +1,3 @@
-{% extends 'shop/base.html' %}
-
-{% block title %}Szczegóły: {{ item.name }}{% endblock %}
-
-{% block content %}
 <h1>{{ item.name }}</h1>
 <ul>
     <li><strong>ID:</strong> {{ item.id }}</li>
@@ -11,4 +6,3 @@
     <li><strong>Dostępność:</strong> {{ item.is_available|yesno:"Tak,Nie" }}</li>
 </ul>
 <a href="{% url 'shop:item_list' %}">← Powrót do listy</a>
-{% endblock %}
