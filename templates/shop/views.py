@@ -44,3 +44,4 @@ def item_add(request):
         form = ComputerItemForm()
 
     return render(request, 'shop/item_form.html', {'form': form})
+a
