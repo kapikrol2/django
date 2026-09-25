@@ -1,10 +1,46 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'shop/base.html' %}
 
-</body>
-</html>
+{% block title %}Dodaj Sprzęt{% endblock %}
+
+{% block content %}
+<h2>Dodaj nowy sprzęt</h2>
+
+<form method="post">
+    {% csrf_token %}
+    
+    <!-- Zadanie 9: Ręczne wyrenderowanie pola 'name' z unikalną klasą CSS -->
+    <div class="form-group">
+        {{ form.name.label_tag }}<br>
+        {{ form.name }}
+        {% if form.name.errors %}
+            <div class="errorlist">{{ form.name.errors }}</div>
+        {% endif %}
+    </div>
+
+    <!-- Pozostałe pola generowane automatycznie z as_p -->
+    <div class="form-group">
+        {{ form.price.label_tag }}<br>{{ form.price }}{{ form.price.errors }}
+    </div>
+    <div class="form-group">
+        {{ form.promo_price.label_tag }}<br>{{ form.promo_price }}{{ form.promo_price.errors }}
+    </div>
+    <div class="form-group">
+        {{ form.category.label_tag }}<br>{{ form.category }}{{ form.category.errors }}
+    </div>
+    <div class="form-group">
+        {{ form.is_available }} {{ form.is_available.label_tag }}{{ form.is_available.errors }}
+    </div>
+    <div class="form-group">
+        {{ form.description.label_tag }}<br>{{ form.description }}{{ form.description.errors }}
+    </div>
+
+    {% if form.non_field_errors %}
+        <div class="errorlist">
+            {{ form.non_field_errors }}
+        </div>
+    {% endif %}
+
+    <br>
+    <button type="submit">Zapisz</button>
+</form>
+{% endblock %}
