@@ -1,10 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'shop/base.html' %}
 
-</body>
-</html>
+{% block content %}
+<h2>Lista produktów (Przepisane z Jinja2 na DTL)</h2>
+<ul>
+{% for product in products %}
+    <li>{{ product.name }} - {{ product.price }} zł (Dostępny: {{ product.is_available|yesno:"Tak,Nie" }})</li>
+{% empty %}
+    <li>Brak produktów.</li>
+{% endfor %}
+</ul>
+{% endblock %}
