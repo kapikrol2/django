@@ -33,6 +33,8 @@ def item_list(request):
 
 def item_detail(request, item_id):
     item = next((item for item in ITEMS if item["id"] == item_id), None)
+    if not item:
+        raise Http404("Nie znaleziono takiego sprzętu!")
     return render(request, 'shop/item_detail.html', {'item': item})
 
 def item_add(request):
