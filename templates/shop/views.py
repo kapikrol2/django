@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.http import Http404  # <-- Dodany brakujący import dla Http404
 from .forms import ComputerItemForm, SearchForm
 
 
@@ -50,6 +51,9 @@ def item_add(request):
                 "category": data["category"],
                 "is_available": data["is_available"]
             })
-                return redirect('shop:item_list')
+            return redirect('shop:item_list')  # <-- Poprawione wcięcie (12 spacji)
+    else:
+        form = ComputerItemForm()
 
+    # Poprawione wcięcie - linia znajduje się teraz wewnątrz funkcji item_add (4 spacje)
     return render(request, 'shop/item_form.html', {'form': form})
