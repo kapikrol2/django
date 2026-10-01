@@ -39,8 +39,15 @@ def item_add(request):
     if request.method == 'POST':
         form = ComputerItemForm(request.POST)
         if form.is_valid():
-            return redirect('shop:item_list')
-    else:
-        form = ComputerItemForm()
+            data = form.cleaned_data
+            new_id = max([item["id"] for item in ITEMS], default=0) + 1
+            ITEMS.append({
+                "id": new_id,
+                "name": data["name"],
+                "price": float(data["price"]),
+                "category": data["category"],
+                "is_available": data["is_available"]
+            })
+                return redirect('shop:item_list')
 
     return render(request, 'shop/item_form.html', {'form': form})
