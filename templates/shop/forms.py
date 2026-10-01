@@ -27,8 +27,6 @@ class ComputerItemForm(forms.Form):
         if name and name.lower() == 'test':
             raise forms.ValidationError("Nazwa produktu nie może brzmieć 'test'!")
         return name
-
-    # Zadanie 6: clean() - walidacja wielopolowa (cena promo < cena podstawowa)
     def clean(self):
         cleaned_data = super().clean()
         price = cleaned_data.get('price')
