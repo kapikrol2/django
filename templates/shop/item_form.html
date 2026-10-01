@@ -2,8 +2,6 @@
 
 <form method="post">
     {% csrf_token %}
-    
-    <!-- Zadanie 9: Ręczne wyrenderowanie pola 'name' z unikalną klasą CSS -->
     <div class="form-group">
         {{ form.name.label_tag }}<br>
         {{ form.name }}
@@ -11,8 +9,6 @@
             <div class="errorlist">{{ form.name.errors }}</div>
         {% endif %}
     </div>
-
-    <!-- Pozostałe pola generowane automatycznie z as_p -->
     <div class="form-group">
         {{ form.price.label_tag }}<br>{{ form.price }}{{ form.price.errors }}
     </div>
@@ -34,7 +30,6 @@
             {{ form.non_field_errors }}
         </div>
     {% endif %}
-
     <br>
     <button type="submit">Zapisz</button>
 </form>

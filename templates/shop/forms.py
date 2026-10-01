@@ -1,7 +1,6 @@
 from django import forms
 
 class ComputerItemForm(forms.Form):
-    # Zadanie 9: Pole z widgetem posiadającym klasę CSS 'wide'
     name = forms.CharField(
         max_length=100,
         min_length=3,
