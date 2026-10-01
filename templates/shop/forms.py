@@ -20,8 +20,6 @@ class ComputerItemForm(forms.Form):
     )
     is_available = forms.BooleanField(required=False, label="Dostępny na stanie")
     description = forms.CharField(widget=forms.Textarea, required=False, label="Opis")
-
-    # Zadanie 6: clean_<pole> - nazwa nie może być "test"
     def clean_name(self):
         name = self.cleaned_data.get('name')
         if name and name.lower() == 'test':
