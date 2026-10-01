@@ -1,7 +1,17 @@
 <h2>Dodaj nowy sprzęt</h2>
 
+{% extends 'shop/base.html' %}
+
+{% block title %}Dodaj sprzęt{% endblock %}
+
+{% block content %}
+<h2>Dodaj nowy sprzęt</h2>
+
 <form method="post">
     {% csrf_token %}
+    <!-- reszta formularza bez zmian -->
+</form>
+{% endblock %}
     <div class="form-group">
         {{ form.name.label_tag }}<br>
         {{ form.name }}
