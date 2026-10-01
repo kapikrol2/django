@@ -35,8 +35,6 @@ class ComputerItemForm(forms.Form):
         if price and promo_price and promo_price >= price:
             raise forms.ValidationError("Cena promocyjna musi być niższa od ceny podstawowej!")
         return cleaned_data
-
-# Zadanie 8: SearchForm
 class SearchForm(forms.Form):
     q = forms.CharField(required=False, label="Szukaj")
     in_stock = forms.BooleanField(required=False, label="Tylko dostępne")
