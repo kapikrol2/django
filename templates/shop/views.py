@@ -51,9 +51,8 @@ def item_add(request):
                 "category": data["category"],
                 "is_available": data["is_available"]
             })
-            return redirect('shop:item_list')  # <-- Poprawione wcięcie (12 spacji)
+            return redirect('shop:item_list')
     else:
         form = ComputerItemForm()
 
-    # Poprawione wcięcie - linia znajduje się teraz wewnątrz funkcji item_add (4 spacje)
     return render(request, 'shop/item_form.html', {'form': form})
